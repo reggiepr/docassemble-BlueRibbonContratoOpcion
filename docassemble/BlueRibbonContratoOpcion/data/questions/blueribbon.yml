@@ -2,6 +2,14 @@ modules:
   - .contrato
   - num2words
 ---
+metadata:
+  title: "Blue Ribbon - Contrato de opción"
+  short title: "Opción"
+  description: "Entrevista para contrato de opción"
+  version: 0.0.1
+  language: es
+
+---
 objects:
 #  - parte_1: DADict
 #  - parte1_miembros: DAList
