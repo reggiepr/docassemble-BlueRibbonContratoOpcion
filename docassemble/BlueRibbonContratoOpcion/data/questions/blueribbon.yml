@@ -34,7 +34,7 @@ code: |
 ---
 mandatory: True
 question: |
-  Naturaleza de la parte I 
+  Naturaleza de la parte I (vendedor)
 fields:
   - Tipo primera parte: parte1_tipo
     code: |
@@ -43,7 +43,7 @@ continue button field: natu_parte1_ok
 ---
 mandatory: True
 question: |
-  Naturaleza de la parte II
+  Naturaleza de la parte II (comprador)
 fields:
   - Tipo segunda parte: parte2_tipo
     code: |
@@ -133,6 +133,7 @@ code: |
 
 
 ---
+
 question: | 
  Resumen de las partes:
  De la primera parte: ${ miembros_parte1 }
@@ -144,6 +145,17 @@ question: |
 continue button field: resumen_presentado
 mandatory: True
 ---
+mandatory: True
+code: |
+  lista_propiedad_mueble = ''
+  lista_propiedad_mueble_en = ''
+  for i, e in enumerate(enser_o_propiedad_mueble):
+    lacoma = ', ' if i < (len(enser_o_propiedad_mueble) - 1) else ''
+    cardinal = num2words(e.cantidad, lang='es', to='cardinal')
+    lista_propiedad_mueble += f"{'un' if cardinal=='uno' else cardinal} ({e.cantidad}) {e.descripcion}{lacoma}"
+    lista_propiedad_mueble_en += f"{num2words(e.cantidad, lang='en', to='cardinal')} ({e.cantidad}) {e.descripcion_en}{lacoma}"
+---
+
 mandatory: True
 question: |
   Información de la transacción
@@ -172,6 +184,8 @@ code: |
   saldo_restante = precio_compraventa - deposito_comprador
   saldo_restante_palabras = num2words(saldo_restante, lang='es').upper()
   saldo_restante_palabras_en = num2words(saldo_restante, lang='en').upper()
+  periodo_opcion_palabras = f"{'un (1) mes' if periodo_opcion==1 else num2words(periodo_opcion, lang='es')+' ('+str(periodo_opcion)+') meses'}"
+  periodo_opcion_palabras_en = f"{num2words(periodo_opcion)} ({periodo_opcion}) {'months' if periodo_opcion>1 else 'month'}"
 #  enser_o_propiedad_mueble.there_is_another = None
 ---
 mandatory: True
@@ -252,7 +266,7 @@ event: some_event
 attachment:
   - name: Contrato de Opcion
     filename: contrato_opcion
-    docx template file: contrato_opcion_v2.docx
+    docx template file: contrato_opcion_v3.docx
     
 mandatory: true
 ---
