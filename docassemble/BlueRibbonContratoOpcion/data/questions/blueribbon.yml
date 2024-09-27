@@ -172,6 +172,11 @@ fields:
     min: 1
   - Periodo opción(en meses): periodo_opcion
     datatype: integer
+  - Precio de venta sujeto a tasación: sujeto_a_tasacion
+    input type: radio
+    choices:
+      - Sí
+      - No
   - Dirección postal vendedor: direccion_vendedor
 continue button field: info_transaccion_entrada
 ---
