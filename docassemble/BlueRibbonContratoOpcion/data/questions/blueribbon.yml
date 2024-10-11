@@ -191,6 +191,7 @@ code: |
   saldo_restante_palabras_en = num2words(saldo_restante, lang='en').upper()
   periodo_opcion_palabras = f"{'un (1) mes' if periodo_opcion==1 else num2words(periodo_opcion, lang='es')+' ('+str(periodo_opcion)+') meses'}"
   periodo_opcion_palabras_en = f"{num2words(periodo_opcion)} ({periodo_opcion}) {'months' if periodo_opcion>1 else 'month'}"
+  hay_enser_o_propiedad_mueble = 1 if len(enser_o_propiedad_mueble)>0 else 0
 #  enser_o_propiedad_mueble.there_is_another = None
 ---
 mandatory: True
